@@ -35,6 +35,25 @@
     end
   
   end
+
+  class Player2
+    def initialize
+    end
+    def guess_code
+        puts "You can choose from six colours for your guess"
+        puts "Colours are: Red, Blue, Yellow, Orange, Purple, Green"
+        puts "Enter first colour"
+        @guess1 = gets.chomp
+        puts "Enter second tcolour"
+        @guess2 = gets.chomp
+        puts "Enter third colour"
+        @guess3 = gets.chomp
+        puts "Enter fourth colour"
+        @guess4 = gets.chomp
+    end
+    class Game
+    
+    end
   new_game = Board.new
   #new_game.current_board
   p1 = Player1.new
