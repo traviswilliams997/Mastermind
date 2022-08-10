@@ -44,7 +44,7 @@
         puts "Colours are: Red, Blue, Yellow, Orange, Purple, Green"
         puts "Enter first colour"
         @guess1 = gets.chomp
-        puts "Enter second tcolour"
+        puts "Enter second colour"
         @guess2 = gets.chomp
         puts "Enter third colour"
         @guess3 = gets.chomp
@@ -57,20 +57,22 @@
 end
     class Game
         def initialize
-        b = Board.new
-        p1 = Player1.new
-        p2 = Player2.new
-    
-        end
-        p1.choose_code
+        @b = Board.new
+        @p1 = Player1.new
+        @p2 = Player2.new
+        @p1.choose_code
        
-        p2.guess_code
+        @p2.guess_code 
+        
         if @code == @guess
-            p "Win"
-        else
-          p "Lose"
-        end       
-         
+        p "Win"
+    else
+      p "Lose"
+    end       
+     
+        end
+       
+       
     end
     new_game = Game.new
 
