@@ -50,11 +50,28 @@
         @guess3 = gets.chomp
         puts "Enter fourth colour"
         @guess4 = gets.chomp
+
+        @guess = [@guess1, @guess2, @guess3, @guess4]
+
     end
+end
     class Game
+        def initialize
+        b = Board.new
+        p1 = Player1.new
+        p2 = Player2.new
     
+        end
+        p1.choose_code
+       
+        p2.guess_code
+        if @code == @guess
+            p "Win"
+        else
+          p "Lose"
+        end       
+         
     end
-  new_game = Board.new
-  #new_game.current_board
-  p1 = Player1.new
-  p1.choose_code
+    new_game = Game.new
+
+ 
