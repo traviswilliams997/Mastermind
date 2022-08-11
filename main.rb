@@ -21,18 +21,31 @@
     def initialize
     end
     def choose_code
-        puts "You can choose from six colours for your code"
-        puts "Colours are: Red, Blue, Yellow, Orange, Purple, Green"
-        puts "Enter first colour"
-        @colour1 = gets.chomp
-        puts "Enter second colour"
-        @colour2 = gets.chomp
-        puts "Enter third colour"
-        @colour3 = gets.chomp
-        puts "Enter fourth colour"
-        @colour4 = gets.chomp
+       
+      @code = Array.new(4)  
+      rand_num = 4.times.map{ 1 + Random.rand(5)} 
+      rand_num.each_with_index  do |number, index|
+          if number == 1
+            @code[index] = "RED"
+          end
+          if number == 2
+            @code[index] = "BLUE"
+          end
+          if number == 3
+            @code[index] = "YELLOW"
+          end
+          if number == 4
+            @code[index] = "ORANGE"
+          end
+          if number == 5
+            @code[index] = "PURPLE"
+          end
+          if number == 6
+            @code[index] = "GREEN"
+          end
+        end
+      p rand_num 
 
-      @code = [@colour1, @colour2, @colour3, @colour4]
       p @code
     end
   
