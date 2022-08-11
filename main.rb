@@ -1,4 +1,6 @@
   class  Board
+    attr_accessor :board_state
+
     def initialize
         @board_state = [["x","x","x","x"], ["x","x","x","x"], ["x","x","x","x"]]    
     end
@@ -78,10 +80,10 @@ end
         @p1 = Player1.new
         @p2 = Player2.new
         @p1.choose_code
-       
-        @p2.guess_code      
-     
+            
+  
         end
+
         def check_guess
           win = true
           
@@ -98,10 +100,19 @@ end
             p "Lose"
           end
         end
+
+
+        def play_round
+          for i in 0..1 do 
+            @p2.guess_code  
+            @b.board_state[i] = @p2.guess
+            p @b.board_state
+          end
+        end
        
        
     end
     new_game = Game.new
-    new_game.check_guess
+    new_game.play_round
 
  
