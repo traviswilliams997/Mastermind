@@ -143,8 +143,7 @@ end
           
           p "You have #{@red_peg} red pegs"
           p "You have #{@white_peg} white pegs"
-          p remaining_code
-          p remaining_guess
+         
         end
        
        
