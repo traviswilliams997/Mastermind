@@ -80,6 +80,7 @@ end
         @p1 = Player1.new
         @p2 = Player2.new
         @p1.choose_code
+        self.play_round
             
   
         end
@@ -92,8 +93,8 @@ end
             unless @p1.code[i] == @p2.guess[i]
                 win = false
             end
-
           end
+
           if win 
             p "Win"
           else
@@ -103,16 +104,51 @@ end
 
 
         def play_round
-          for i in 0..1 do 
+          for i in 0..2 do 
             @p2.guess_code  
             @b.board_state[i] = @p2.guess
+
             p @b.board_state
+            self.guess_feedback
           end
+        end
+
+        def guess_feedback
+          @red_peg = 0;
+          @white_peg = 0;
+          index_count = 0;
+          remaining_code = Array.new()  
+          remaining_guess = Array.new()  
+          for i in 0..3 do  
+            
+            if  @p1.code[i] == @p2.guess[i]
+                @red_peg = @red_peg + 1;
+            end
+
+            unless  @p1.code[i] == @p2.guess[i]
+                remaining_code[index_count] = @p1.code[i]
+                remaining_guess[index_count] = @p2.guess[i]
+                index_count = index_count + 1
+            end
+           
+          end
+          for i in 0..remaining_guess.length do 
+             if remaining_code.include? remaining_guess[i] 
+              @white_peg = @white_peg + 1 ;
+             end
+            end
+            
+
+          
+          p "You have #{@red_peg} red pegs"
+          p "You have #{@white_peg} white pegs"
+          p remaining_code
+          p remaining_guess
         end
        
        
-    end
+      end
     new_game = Game.new
-    new_game.play_round
+
 
  
