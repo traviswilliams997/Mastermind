@@ -25,24 +25,25 @@
     def choose_code
        
       @code = Array.new(4)  
-      rand_num = 4.times.map{ 1 + Random.rand(5)} 
-      rand_num.each_with_index  do |number, index|
-          if number == 1
+      rand_num = (1..6).to_a.shuffle
+      for index in 0..3 do 
+   
+          if rand_num[index] == 1
             @code[index] = "RED"
           end
-          if number == 2
+          if rand_num[index]  == 2
             @code[index] = "BLUE"
           end
-          if number == 3
+          if rand_num[index]  == 3
             @code[index] = "YELLOW"
           end
-          if number == 4
+          if rand_num[index]  == 4
             @code[index] = "ORANGE"
           end
-          if number == 5
+          if rand_num[index]  == 5
             @code[index] = "PURPLE"
           end
-          if number == 6
+          if rand_num[index]  == 6
             @code[index] = "GREEN"
           end
         end
