@@ -60,7 +60,7 @@
 
 
     def initialize
-      @score = 0
+      @score = 1
     end
     def guess_code
         puts "You can choose from six colours for your guess"
@@ -100,7 +100,7 @@ end
           end
 
           if win 
-            p "You have won in #{@p2.score + 1} turns"
+            p "You have won in #{@p2.score} turns"
 
           else
             self.guess_feedback
