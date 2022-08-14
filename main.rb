@@ -56,8 +56,11 @@
 
   class Player2
     attr_accessor :guess
+    attr_accessor :score
+
 
     def initialize
+      @score = 0
     end
     def guess_code
         puts "You can choose from six colours for your guess"
@@ -97,9 +100,11 @@ end
           end
 
           if win 
-            p "Win"
+            p "You have won in #{@p2.score + 1} turns"
+
           else
             self.guess_feedback
+            @p2.score = @p2.score + 1 
           end
         end
 
