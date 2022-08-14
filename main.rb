@@ -51,6 +51,35 @@
 
       #p @code
     end
+    def guess_code
+       
+      @guess = Array.new(4)  
+      rand_num = (1..6).to_a.shuffle
+      for index in 0..3 do 
+   
+          if rand_num[index] == 1
+            @code[index] = "RED"
+          end
+          if rand_num[index]  == 2
+            @code[index] = "BLUE"
+          end
+          if rand_num[index]  == 3
+            @code[index] = "YELLOW"
+          end
+          if rand_num[index]  == 4
+            @code[index] = "ORANGE"
+          end
+          if rand_num[index]  == 5
+            @code[index] = "PURPLE"
+          end
+          if rand_num[index]  == 6
+            @code[index] = "GREEN"
+          end
+        end
+      #p rand_num 
+
+      #p @code
+    end
   
   end
 
@@ -89,9 +118,10 @@
         puts "Enter third colour"
         @colour3 = gets.chomp
         puts "Enter fourth colour"
-        @colour4 = gets.chomp
+        @colour4 = gets.chompS
 
         @code = [@colour1, @colour2, @colour3, @colour4]
+        p @code
     end
   
 end
@@ -124,9 +154,7 @@ end
             @p2.score = @p2.score + 1 
           end
         end
-
-
-        def play_rounds
+        def computer_code_player_guess
           for i in 0..8 do 
             @p2.guess_code  
             @b.board_state[i] = @p2.guess
@@ -135,6 +163,11 @@ end
             self.check_guess
           end
 
+        
+        end
+
+        def play_rounds
+          
         end
 
         def guess_feedback
