@@ -135,13 +135,8 @@ end
         puts "Press 1 for computer makes code and player breaks code"
         puts "Press 2 for player makes code and computer breaks code"
         choice =  gets.chomp
-
+       p choice
         self.play_rounds(choice)
-
-        
-        
-            
-  
         end
 
         def check_guess
@@ -187,10 +182,10 @@ end
         
         end
         def play_rounds(choice)
-          if choice == 1
+          if choice == "1"
             self.computer_code_player_guess
           end
-          if choice == 2
+          if choice == "2"
             self.player_code_computer_guess
           end
         end
