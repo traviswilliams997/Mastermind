@@ -145,7 +145,7 @@ end
                 win = false
             end
           end
-
+        
           if win 
             p "You have won in #{@p2.score} turns"
 
@@ -158,6 +158,17 @@ end
           for i in 0..8 do 
             @p2.guess_code  
             @b.board_state[i] = @p2.guess
+
+            p @b.board_state
+            self.check_guess
+          end
+
+        
+        end
+        def player_code_computer_guess
+          for i in 0..8 do 
+            @p1.guess_code  
+            @b.board_state[i] = @p1.guess
 
             p @b.board_state
             self.check_guess
