@@ -147,8 +147,8 @@ end
             
 
           
-          p "You have #{@red_peg} red pegs"
-          p "You have #{@white_peg} white pegs"
+          p "You have #{@red_peg} red pegs. Red peg means guess is the correct colour and are in  the right position"
+          p "You have #{@white_peg} white pegs. White peg means guess is the correct colour but incorrect position"
          
         end
        
