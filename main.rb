@@ -118,7 +118,7 @@
         puts "Enter third colour"
         @colour3 = gets.chomp
         puts "Enter fourth colour"
-        @colour4 = gets.chompS
+        @colour4 = gets.chomp
 
         @code = [@colour1, @colour2, @colour3, @colour4]
         p @code
@@ -127,11 +127,19 @@
 end
     class Game
         def initialize
+        
         @b = Board.new
         @p1 = Computer.new
         @p2 = Player1.new
-        @p1.choose_code
-        self.play_rounds
+        puts "There are two game modes"
+        puts "Press 1 for computer makes code and player breaks code"
+        puts "Press 2 for player makes code and computer breaks code"
+        choice =  gets.chomp
+
+        self.play_rounds(choice)
+
+        
+        
             
   
         end
@@ -155,6 +163,7 @@ end
           end
         end
         def computer_code_player_guess
+          @p1.choose_code
           for i in 0..8 do 
             @p2.guess_code  
             @b.board_state[i] = @p2.guess
@@ -166,6 +175,7 @@ end
         
         end
         def player_code_computer_guess
+          @p2.choose_code
           for i in 0..8 do 
             @p1.guess_code  
             @b.board_state[i] = @p1.guess
@@ -176,10 +186,15 @@ end
 
         
         end
-
-        def play_rounds
-          
+        def play_rounds(choice)
+          if choice == 1
+            self.computer_code_player_guess
+          end
+          if choice == 2
+            self.player_code_computer_guess
+          end
         end
+       
 
         def guess_feedback
           @red_peg = 0;
