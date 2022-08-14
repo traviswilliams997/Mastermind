@@ -77,6 +77,23 @@
         @guess = [@guess1, @guess2, @guess3, @guess4]
 
     end
+    def choose_code
+       
+      @code = Array.new(4)  
+      puts "You can choose from six colours for your code"
+        puts "Colours are: Red, Blue, Yellow, Orange, Purple, Green"
+        puts "Enter first colour"
+        @colour1 = gets.chomp
+        puts "Enter second colour"
+        @colour2 = gets.chomp
+        puts "Enter third colour"
+        @colour3 = gets.chomp
+        puts "Enter fourth colour"
+        @colour4 = gets.chomp
+
+        @code = [@colour1, @colour2, @colour3, @colour4]
+    end
+  
 end
     class Game
         def initialize
