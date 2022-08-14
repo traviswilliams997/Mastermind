@@ -2,7 +2,7 @@
     attr_accessor :board_state
 
     def initialize
-        @board_state = [["x","x","x","x"], ["x","x","x","x"], ["x","x","x","x"]]    
+        @board_state = [["x","x","x","x"], ["x","x","x","x"], ["x","x","x","x"], ["x","x","x","x"], ["x","x","x","x"], ["x","x","x","x"], ["x","x","x","x"], ["x","x","x","x"], ["x","x","x","x"]]    
     end
     def current_board
         @board_state.each do |row|
@@ -47,9 +47,9 @@
             @code[index] = "GREEN"
           end
         end
-      p rand_num 
+      #p rand_num 
 
-      p @code
+      #p @code
     end
   
   end
@@ -81,7 +81,7 @@ end
         @p1 = Player1.new
         @p2 = Player2.new
         @p1.choose_code
-        self.play_round
+        self.play_rounds
             
   
         end
@@ -99,19 +99,20 @@ end
           if win 
             p "Win"
           else
-            p "Lose"
+            self.guess_feedback
           end
         end
 
 
-        def play_round
-          for i in 0..2 do 
+        def play_rounds
+          for i in 0..8 do 
             @p2.guess_code  
             @b.board_state[i] = @p2.guess
 
             p @b.board_state
-            self.guess_feedback
+            self.check_guess
           end
+
         end
 
         def guess_feedback
