@@ -17,7 +17,7 @@
      
  
   end
-  class Player1
+  class Computer
     attr_accessor :code
 
     def initialize
@@ -54,7 +54,7 @@
   
   end
 
-  class Player2
+  class Player1
     attr_accessor :guess
     attr_accessor :score
 
@@ -81,8 +81,8 @@ end
     class Game
         def initialize
         @b = Board.new
-        @p1 = Player1.new
-        @p2 = Player2.new
+        @p1 = Computer.new
+        @p2 = Player1.new
         @p1.choose_code
         self.play_rounds
             
@@ -144,8 +144,6 @@ end
               @white_peg = @white_peg + 1 ;
              end
             end
-            
-
           
           p "You have #{@red_peg} red pegs. Red peg means guess is the correct colour and are in  the right position"
           p "You have #{@white_peg} white pegs. White peg means guess is the correct colour but incorrect position"
