@@ -1,8 +1,10 @@
   class  Board
     attr_accessor :board_state
+    attr_accessor :pegs
 
     def initialize
         @board_state = [["x","x","x","x"], ["x","x","x","x"], ["x","x","x","x"], ["x","x","x","x"], ["x","x","x","x"], ["x","x","x","x"], ["x","x","x","x"], ["x","x","x","x"], ["x","x","x","x"]]    
+        @pegs = [{ :peg_red => 0, :peg_white => 0}, { :peg_red => 0, :peg_white => 0}, { :peg_red => 0, :peg_white => 0}, { :peg_red => 0, :peg_white => 0}, { :peg_red => 0, :peg_white => 0}, { :peg_red => 0, :peg_white => 0}, { :peg_red => 0, :peg_white => 0}, { :peg_red => 0, :peg_white => 0}, { :peg_red => 0, :peg_white => 0}]
     end
     def current_board
         @board_state.each do |row|
@@ -76,9 +78,7 @@
             @code[index] = "GREEN"
           end
         end
-      #p rand_num 
-
-      #p @code
+      
     end
   
   end
@@ -139,7 +139,7 @@ end
         self.play_rounds(choice)
         end
 
-        def check_guess
+        def check_guess(row)
           win = true
           
           for i in 0..3 do  
@@ -153,18 +153,19 @@ end
             p "You have won in #{@p2.score} turns"
 
           else
-            self.guess_feedback
+            self.guess_feedback(row)
             @p2.score = @p2.score + 1 
           end
         end
         def computer_code_player_guess
           @p1.choose_code
           for i in 0..8 do 
+            row = i 
             @p2.guess_code  
             @b.board_state[i] = @p2.guess
 
             p @b.board_state
-            self.check_guess
+            self.check_guess(row)
           end
 
         
@@ -172,11 +173,12 @@ end
         def player_code_computer_guess
           @p2.choose_code
           for i in 0..8 do 
+            row = i 
             @p1.guess_code  
             @b.board_state[i] = @p1.guess
 
             p @b.board_state
-            self.check_guess
+            self.check_guess(row)
           end
 
         
@@ -191,7 +193,7 @@ end
         end
        
 
-        def guess_feedback
+        def guess_feedback(row)
           @red_peg = 0;
           @white_peg = 0;
           index_count = 0;
@@ -215,9 +217,13 @@ end
               @white_peg = @white_peg + 1 ;
              end
             end
+            @b.pegs[row][:peg_red] = @red_peg
+            @b.pegs[row][:peg_white] = @white_peg
+
           
           p "You have #{@red_peg} red pegs. Red peg means guess is the correct colour and are in  the right position"
           p "You have #{@white_peg} white pegs. White peg means guess is the correct colour but incorrect position"
+          p @b.pegs
          
         end
        
