@@ -21,8 +21,11 @@
   end
   class Computer
     attr_accessor :code
+    attr_accessor :guess
+    attr_accessor :score
 
     def initialize
+      @score = 1
     end
     def choose_code
        
@@ -60,30 +63,37 @@
       for index in 0..3 do 
    
           if rand_num[index] == 1
-            @code[index] = "RED"
+            @guess[index] = "RED"
           end
           if rand_num[index]  == 2
-            @code[index] = "BLUE"
+            @guess[index] = "BLUE"
           end
           if rand_num[index]  == 3
-            @code[index] = "YELLOW"
+            @guess[index] = "YELLOW"
           end
           if rand_num[index]  == 4
-            @code[index] = "ORANGE"
+            @guess[index] = "ORANGE"
           end
           if rand_num[index]  == 5
-            @code[index] = "PURPLE"
+            @guess[index] = "PURPLE"
           end
           if rand_num[index]  == 6
-            @code[index] = "GREEN"
+            @guess[index] = "GREEN"
           end
         end
       
     end
+    def correct_guess(row)
+      if @b.pegs[row][:peg_red] == 3 && @b.pegs[row][:peg_white] == 1 
+      @computer.guess[]
+    
+    end
+  end
   
   end
 
   class Player1
+    attr_accessor :code
     attr_accessor :guess
     attr_accessor :score
 
@@ -135,11 +145,11 @@ end
         puts "Press 1 for computer makes code and player breaks code"
         puts "Press 2 for player makes code and computer breaks code"
         choice =  gets.chomp
-       p choice
+       
         self.play_rounds(choice)
         end
 
-        def check_guess(row)
+        def check_guess_mode_1(row)
           win = true
           
           for i in 0..3 do  
@@ -157,6 +167,24 @@ end
             @p2.score = @p2.score + 1 
           end
         end
+        def check_guess_mode_2(row)
+          win = true
+          
+          for i in 0..3 do  
+            
+            unless @p1.code[i] == @p2.guess[i]
+                win = false
+            end
+          end
+        
+          if win 
+            p "Computer has won in #{@p1.score} turns"
+
+          else
+            self.correct_guess
+            @p1.score = @p1.score + 1 
+          end
+        end
         def computer_code_player_guess
           @p1.choose_code
           for i in 0..8 do 
@@ -165,7 +193,7 @@ end
             @b.board_state[i] = @p2.guess
 
             p @b.board_state
-            self.check_guess(row)
+            self.check_guess_mode_1(row)
           end
 
         
@@ -175,7 +203,7 @@ end
           for i in 0..8 do 
             row = i 
             @p1.guess_code  
-            @b.board_state[i] = @p1.guess
+            @b.board_state[i] = @p2.guess
 
             p @b.board_state
             self.check_guess(row)
@@ -226,7 +254,7 @@ end
           p @b.pegs
          
         end
-       
+        
        
       end
     new_game = Game.new
